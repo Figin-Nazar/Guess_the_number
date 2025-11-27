@@ -1,18 +1,18 @@
-# Guess_the_number
+# Вгадай число 
 Вгадай число. Програма генерує випадкове число від 1 до 100 (вам знадобиться import random).  Користувач намагається вгадати число. Програма підказує: "Більше" або "Менше". У користувача є лише 7 спроб. Якщо спроби закінчилися — гравець програв.
 
 # Початок
-import random
-import tkinter as tk
-secret = random.randint(1, 100)  
-attempts = 7                     
+    import random
+    import tkinter as tk
+    secret = random.randint(1, 100)  
+    attempts = 7                     
 
 
 
 # Перевірка вводу
 
-def check_guess():
-    global attempts, secret
+    def check_guess():
+        global attempts, secret
 
     guess_str = guess_entry.get()
 
@@ -46,8 +46,8 @@ def check_guess():
 
 # Зіграти знову
 
-def restart_game():
-    global secret, attempts
+    def restart_game():
+        global secret, attempts
 
     secret = random.randint(1, 100)
     attempts = 7
@@ -63,48 +63,48 @@ def restart_game():
 
 # Валідація цифер
 
-def only_digits(char):
-    return char.isdigit() or char == ""
+    def only_digits(char):
+        return char.isdigit() or char == ""
 
 
 # Вікно
 
-window = tk.Tk()
-window.title("Вгадай число")
-window.geometry("350x350")
-title_label = tk.Label(window, text="Вгадай число (1–100)", font=("Times New Roman", 14))
-title_label.pack(pady=10)
+    window = tk.Tk()
+    window.title("Вгадай число")
+    window.geometry("350x350")
+    title_label = tk.Label(window, text="Вгадай число (1–100)", font=("Times New Roman", 14))
+    title_label.pack(pady=10)
 
 
 #Поле вводу
 
-validate_cmd = window.register(only_digits)
+    validate_cmd = window.register(only_digits)
 
-guess_entry = tk.Entry(
-    window,
-    font=("Times New Roman", 12),
-    validate="key",
-    validatecommand=(validate_cmd, "%S")
-)
-guess_entry.pack(pady=5)
+    guess_entry = tk.Entry(
+        window,
+        font=("Times New Roman", 12),
+        validate="key",
+        validatecommand=(validate_cmd, "%S")
+    )
+    guess_entry.pack(pady=5)
 
 # Підтвердження через ENTER
-guess_entry.bind("<Return>", lambda event: check_guess())
+    guess_entry.bind("<Return>", lambda event: check_guess())
 
-check_button = tk.Button(window, text="Перевірити", font=("Times New Roman", 12), command=check_guess)
-check_button.pack(pady=10)
+    check_button = tk.Button(window, text="Перевірити", font=("Times New Roman", 12), command=check_guess)
+    check_button.pack(pady=10)
 
 
 
 # Зіграти знову
-restart_button = tk.Button(window, text="Зіграти знову", font=("Times New Roman", 12), command=restart_game)
-restart_button.pack(pady=5)
+    restart_button = tk.Button(window, text="Зіграти знову", font=("Times New Roman", 12), command=restart_game)
+    restart_button.pack(pady=5)
 
 
-result_label = tk.Label(window, text="", font=("Times New Roman", 12))
-result_label.pack(pady=5)
+    result_label = tk.Label(window, text="", font=("Times New Roman", 12))
+    result_label.pack(pady=5)
 
-attempts_label = tk.Label(window, text=f"Залишилось спроб: {attempts}", font=("Times New Roman", 12))
-attempts_label.pack(pady=5)
+    attempts_label = tk.Label(window, text=f"Залишилось спроб: {attempts}", font=("Times New Roman", 12))
+    attempts_label.pack(pady=5)
 
-window.mainloop()
+    window.mainloop()
